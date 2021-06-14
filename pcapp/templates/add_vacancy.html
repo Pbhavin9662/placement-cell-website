@@ -1,0 +1,24 @@
+{% extends 'company.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Add vaccancy{% endblock %}
+{% block head %}
+{% endblock %}
+{% block company_nav %}
+{% endblock %}
+{% block body %}
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th><h3>Add vaccancy</h3></th>
+    </tr>
+
+    </thead>
+</table>
+<form class="form-horizontal" method="post">{% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;
+</form>
+
+{% endblock %}

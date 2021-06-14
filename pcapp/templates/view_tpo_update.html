@@ -1,0 +1,69 @@
+{% extends 'admin.html' %}
+{% block title %}View TPO Update{% endblock %}
+{% block head %}
+{% endblock %}
+{% block admin_nav %}
+{% endblock %}
+{% block body %}
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th><h3>View TPO Update</h3></th>
+    </tr>
+    <tr>
+        <th><label>Show</label>
+            <select name="tablesize">
+                <option value="5">5</option>
+                <option value="10" selected>{{n}}</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+            <label>entries</label>
+        </th>
+        <th>
+            <label>Search:</label>
+            <input type="search" name="search">
+        </th>
+    </tr>
+    </thead>
+</table>
+<table class="table table-bordered">
+    <tr>
+        <th>S.NO</th>
+        <th>Tpo_update</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in tpo %}
+    <tr>
+        <td> {{ forloop.counter}}</td>
+        <td>{{i.tpo_update}}</td>
+
+
+        <td>
+            <a href="{% url 'delete_tpo_update' i.id %}">
+                <button class="btn btn-danger">Delete</button>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+<table class="table">
+    <tr>
+        <th>Showing 1 to 1 of {{n}} entries</th>
+        <th colspan="4">
+            <ul class="pagination justify-content-end">
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+            </ul>
+        </th>
+    </tr>
+</table>
+{% endblock %}

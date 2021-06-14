@@ -1,0 +1,57 @@
+{% extends 'company.html' %}
+{% block title %}Add Selected Student{% endblock %}
+{% block head %}
+{% endblock %}
+{% block company_nav %}
+{% endblock %}
+{% block body %}
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th><h3>Add Selected Student</h3></th>
+    </tr>
+
+    </thead>
+</table>
+<form class="form-horizontal" method="post">{% csrf_token %}
+
+
+    <div class="form-group">
+        <label class="control-label col-md-3" for="enrollment">Enrollemnt No.</label>
+        <div>
+            <input type="text" class="form-control col-md-6" id="enrollment" name="enrollment" placeholder="Your answer">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3" for="name">Name</label>
+        <div>
+            <input type="text" class="form-control col-md-6" id="name" name="name" placeholder="Your answer">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3" for="mobile">Mobile</label>
+        <div>
+            <input type="text" class="form-control col-md-6" id="mobile" name="mobile" placeholder="Your answer">
+        </div>
+    </div>
+    <div class="form-group">
+<label class="control-label">Branch:</label>
+            <select name="branch">
+                <option value="IT" selected>IT</option>
+                <option value="CE">CE</option>
+            </select>
+    </div>
+    <div class="form-group">
+<label class="control-label">Selected Or Not:</label>
+            <select name="selected">
+                <option value="Selected" selected>Selected</option>
+                <option value="Not Selected">Not Selected</option>
+            </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Add</button>
+    <a href="{% url 'company_dashboard' %}"><button  type="button" class="btn btn-primary">go to Home</button></a>
+</form>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'student.html' %}
+{% block title %}Selected Student list{% endblock %}
+{% block head %}
+{% endblock %}
+{% include 'navbar.html' %}
+{% block body %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th><h3>View Selected Students list</h3></th>
+    </tr>
+    <tr>
+        <th><label>Show</label>
+            <select name="tablesize">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+            <label>entries</label>
+        </th>
+        <th>
+            <form action="/search" method="get" class="form-inline">
+                <input type="search" class="form-control mr-1" name="query" id="query" style="width:300px" placeholder="search name">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </th>
+    </tr>
+    </thead>
+</table>
+<table class="table table-bordered">
+    <tr>
+        <th>S.NO</th>
+        <th>Enrollment</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Branch</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in users %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.enrollment}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.mobile}}</td>
+        <td>{{i.branch}}</td>
+        <td style="color:green">{{i.selected}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+{% if request.user.is_staff %}
+<div class="float-center">
+    <a href="{% url 'delete_selected_student' %}">
+        <button type="button" class="btn btn-primary">Clear All</button>
+    </a></div>
+{% endif %}
+
+  {% if users.has_other_pages %}
+  <ul class="pagination justify-content-end">
+    {% if users.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ users.previous_page_number }}">previous</a></li>
+    {% else %}
+      <li class="disabled page-item"><span class="page-link">&laquo;</span></li>
+    {% endif %}
+    {% for i in users.paginator.page_range %}
+      {% if users.number == i %}
+        <li class="active page-item"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if users.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ users.next_page_number }}">Next</a></li>
+    {% else %}
+      <li class="disabled page-item"><span class="page-link">&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+{% endblock %}

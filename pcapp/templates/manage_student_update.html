@@ -1,0 +1,28 @@
+{% extends 'admin.html' %}
+{% block title %}Manage student Updates{% endblock %}
+{% block head %}
+{% endblock %}
+{% block admin_nav %}
+{% endblock %}
+
+{% block body %}
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th><h3>Manage Student Updates</h3></th>
+    </tr>
+    </thead>
+</table>
+<form class="form-horizontal" method="post">{% csrf_token %}
+
+    <div class="form-group" id="#add_news2">
+        <label class="control-label col-md-3" for="student_update">Students Updates(New)</label>
+        <textarea class="form-control col-md-6" id="student_update" rows="5" name="student_update"
+                  placeholder="Your answer"></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Add</button>
+</form>
+
+{% endblock %}

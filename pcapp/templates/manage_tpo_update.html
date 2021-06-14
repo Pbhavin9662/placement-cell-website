@@ -1,0 +1,29 @@
+{% extends 'admin.html' %}
+{% block title %}Manage TPO Updates{% endblock %}
+{% block head %}
+{% endblock %}
+{% block admin_nav %}
+{% endblock %}
+
+{% block body %}
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th><h3>Manage TPO Updates</h3></th>
+    </tr>
+    </thead>
+</table>
+<form class="form-horizontal" method="post">{% csrf_token %}
+    <div class="form-group" id="#add_news">
+        <label class="control-label col-md-3" for="tpo_update">TPO Updates(New)</label>
+        <textarea class="form-control col-md-6" id="tpo_update" rows="5" name="tpo_update"
+                  placeholder="Your answer"></textarea>
+    </div>
+    <br>&nbsp;&nbsp;
+
+    <button class="btn btn-primary" type="submit">Add</button>
+</form>
+
+{% endblock %}

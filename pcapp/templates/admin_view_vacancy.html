@@ -1,0 +1,78 @@
+{% extends 'admin.html' %}
+{% block title %}view admin vaccany{% endblock %}
+{% block head %}
+{% endblock %}
+{% include 'navbar.html' %}
+{% block body %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th><h3>view vaccancy</h3></th>
+    </tr>
+    <tr>
+        <th><label>Show</label>
+            <select name="tablesize">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+            <label>entries</label>
+        </th>
+        <th>
+            <label>Search:</label>
+            <input type="search" name="search">
+        </th>
+    </tr>
+    </thead>
+</table>
+<table class="table table-bordered">
+    <tr>
+        <th>S.NO</th>
+        <th>Company Name</th>
+        <th>Job Title</th>
+        <th>No of Opening</th>
+        <th>Location</th>
+        <th>Last Date</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in form %}
+    <tr>
+        <td> {{ forloop.counter}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.job_title}}</td>
+        <td>{{i.no_of_opening}}</td>
+        <td>{{i.location}}</td>
+        <td>{{i.last_date}}</td>
+        <td>
+            <a href="{% url 'admin_view_vacancy_details' i.id %}">
+                <button class="btn btn-primary">View</button>
+            </a>
+            <a href="{% url 'update_vacancy' i.id %}">
+                <button class="btn btn-primary">Update</button>
+            </a>
+            <a href="{% url 'delete_vacancy' i.id %}">
+                <button class="btn btn-danger">Delete</button>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<table class="table">
+    <tr>
+        <th>Showing 1 to 1 of 1 entries</th>
+        <th colspan="4">
+            <ul class="pagination justify-content-end">
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+            </ul>
+        </th>
+    </tr>
+</table>
+{% endblock %}

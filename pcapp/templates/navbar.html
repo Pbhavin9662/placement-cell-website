@@ -1,0 +1,221 @@
+{% load static %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="#" style="color:orange;font-size:30px">Placement Cell</a>
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <!-- Links -->
+        <ul class="navbar-nav">
+            {% if not request.user.student %}
+            {% if not request.user.company %}
+            {% if not request.user.is_staff %}
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Signup</a>
+            </li>
+            {% endif %}{% endif %}{% endif %}
+
+
+            <!-- student nav-->
+
+
+            {% if request.user.student %}
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'student_dashboard' %}">Dashboard</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop3" data-toggle="dropdown">
+                    Fill Education Form
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'student_form' %}">Add Details</a>
+                    <a class="dropdown-item" href="{% url 'view_student_form' %}">View Details</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'view_vaccancy' %}">view Vaccancy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'applied_job_list' %}">History of applied Job</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../selected_student_list/">Selected Students list</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'saccount' %}">Profile</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop78" data-toggle="dropdown">
+                    Success Story
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'successStory' %}">Create Story</a>
+                    <a class="dropdown-item" href="{% url 'view_successStory' %}">View Stories</a>
+                </div>
+            </li>
+
+
+            <!-- admin nav-->
+
+
+            {% elif request.user.is_staff %}
+
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'admin_dashboard' %}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'view_apply_student_list' %}">View Apply Student List</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Selected Student
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'add_selected_student' %}">Add selected Student </a>
+                    <a class="dropdown-item" href="{% url 'selected_student_list' %}">view Selected Student list</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop12" data-toggle="dropdown">
+                    Manage Notice
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'manage_tpo_update' %}">Manage TPO Updates</a>
+                    <a class="dropdown-item" href="{% url 'view_tpo_update' %}">View TPO Updates</a>
+                    <a class="dropdown-item" href="{% url 'manage_student_update' %}">Manage Student Updates</a>
+                    <a class="dropdown-item" href="{% url 'view_student_update' %}">View TPO Updates</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop5" data-toggle="dropdown">
+                    Manage Vaccancy
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'admin_view_vacancy' %}">Latest Update of Vaccancy</a>
+                    <a class="dropdown-item" href="{% url 'selected_student_list' %}"></a>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'view_list_student_form' %}">Student Forms</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop4" data-toggle="dropdown">
+                    User Registers
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'new_students_register' %}">New Register student</a>
+                    <a class="dropdown-item" href="{% url 'new_company_register' %}">New Register company</a>
+                </div>
+            </li>
+
+
+            <!--company-->
+
+
+            {% elif request.user.company %}
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'company_dashboard' %}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'caccount' %}">Profile Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'view_apply_student_list' %}">View Apply Student List</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                    Selected Student
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'add_selected_student' %}">Add selected Student </a>
+                    <a class="dropdown-item" href="{% url 'selected_student_list' %}">view Selected Student list</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                    Add Vaccancy
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'add_vacancy' %}">Add Vaccancy Details</a>
+                    <a class="dropdown-item" href="{% url 'view_company_vacancy' %}">View Vaccancy</a>
+
+                </div>
+            </li>
+            {% endif %}
+            <!--homepage common-->
+            {% if not request.user.student %}
+            {% if not request.user.company %}
+            {% if not request.user.is_staff %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'aboutus' %}">AboutUs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contactus' %}">ContactUs</a>
+            </li>
+            {% endif %}{% endif %}{% endif %}
+        </ul>
+    </div>
+
+
+    <!--    logout zone  -->
+    {% if request.user.student %}
+    <ul class="navbar-nav form-inline">
+        <div class="media">
+            <a href="{% url 'saccount' %}"><img src="{{request.user.student.profile_pic.url}}" alt="profile pic"
+                                                class="mr-1 rounded-circle"
+                                                style="width:60px;height:50px"></a>
+        </div>
+        <li class="nav-item">
+            <h4 class="nav-link" style="color:white"><i>{{request.user}}</i></h4>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+                <button class="btn btn-primary ml-2">Logout</button>
+            </a>
+        </li>
+    </ul>
+    {% endif %}
+    {% if request.user.company %}
+    <ul class="navbar-nav form-inline">
+        <div class="media">
+            <a href="{% url 'caccount' %}"> <img src="{{request.user.company.profile_pic.url}}" alt="profile pic"
+                                                 class="mr-1 rounded-circle"
+                                                 style="width:60px;height:50px">
+            </a>
+        </div>
+        <li class="nav-item">
+            <h4 class="nav-link" style="color:white"><i>{{request.user}}</i></h4>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+                <button class="btn btn-success ml-2">Logout</button>
+            </a>
+        </li>
+    </ul>
+    {% endif %}
+    {% if request.user.is_staff %}
+    <ul class="navbar-nav form-inline">
+        <div class="media">
+            <img src="{% static 'images/admin.JPG/' %}" alt="profile pic" class="mr-1 rounded-circle"
+                 style="width:65px;height:50px;">
+        </div>
+        <li class="nav-item">
+            <h4 class="nav-link" style="color:white"><i>{{request.user}}</i></h4>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+                <button class="btn btn-danger ml-2">Logout</button>
+            </a>
+        </li>
+    </ul>
+    {% endif %}
+</nav>

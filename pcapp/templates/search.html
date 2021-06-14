@@ -1,0 +1,53 @@
+{% extends 'student.html' %}
+{% block title %}Search Results{% endblock %}
+{% block head %}
+{% endblock %}
+{% include 'navbar.html' %}
+{% block body %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th><h3>Search Results</h3></th>
+    </tr>
+    <tr>
+        <th><label>Show</label>
+            <select name="tablesize">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+            <label>entries</label>
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+</table>
+<table class="table table-bordered">
+    <tr>
+        <th>S.NO</th>
+        <th>Enrollment</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Branch</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in studlist %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.enrollment}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.mobile}}</td>
+        <td>{{i.branch}}</td>
+        <td style="color:green">{{i.selected}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+
+{% endblock %}

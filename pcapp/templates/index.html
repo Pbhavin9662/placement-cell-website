@@ -1,0 +1,71 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}Home page{% endblock %}
+{% block head %}
+{% endblock %}
+{% include 'navbar.html' %}
+{% block body %}
+<br><h3>Website Accessor</h3>
+<hr>
+<button class="btn btn-primary mb-2"><a href="{% url 'student_dashboard' %}" style="color:white">Student Page</a>
+</button>
+<button class="btn btn-primary mb-2"><a href="{% url 'company_dashboard' %}" style="color:white">Company Page</a>
+</button>
+<button class="btn btn-primary mb-2"><a href="{% url 'admin_dashboard' %}" style="color:white">Admin Page</a></button>
+<br>
+
+<!--introduction-->
+<h2 class="py-2 mt-1" style="background-color:#5F9EA0;color:white;font-family:Verdana;">Placement Cell</h2>
+<hr>
+<h3 style="color:blue">Introduction</h3><hr>
+<p >The Training and Placement Cell of GEC, Modasa provides guidance and all the assistance to the students in order to achieve their career goals. Requisite emphasis is given for soft skills development complementing the regular academic programs. Aptitude tests, Group Discussions, Job oriented courses and special training programs are regularly conducted. We also organizes guest lectures and invites visiting faculty members from renowned institutes for training students and faculty members as well. The Objective of the placement cell is to facilitate the process of placement & ensure that each eligible student gets an opportunity in the industries. The college is in the process of signing MOUs with many industrial organizations and industrial chambers to provide some of the best placements in India. Technical paper presentation contests are held in collaboration with industries to discuss new developments and trends. Our Alumni are presently working at India’s best corporate, ensuring high pay scale and job security. Other than this, we are hopeful of further improving our placement opportunities, activities and avenues in the near future while working in association with our powerful Alumni in Gujarat and across the country.</p><p>
+We have been successful in maintaining our high placement statistics over the years and the fact that our students bear the recession blues with record breaking placements itself is a testimony to our quality. Our ingenious alumnae have set new standards in the corporate world through their estimable contributions and it is my firm conviction that we will continue that legacy in the years to come.
+</p><p>
+The Placement Cell organizes career guidance programmes for all the students starting from first year. The cell arranges training programmes like Mock Interviews, Group Discussions, Communication Skills Workshop etc and it also organizes Public Sector Exam Training for students who are interested to join Government Sectors. It also invites HR Managers from different industries to conduct training programmes for final year students.
+</p>
+TATA CONSULTANCY SERVICES has accredited our college in the year 2019, from which they are visiting our college every year for conducting Placement Training programmes and Campus Interviews.</p>
+
+<hr><h3 style="color:blue">Objectives</h3><hr>
+<ul>
+    <li>Developing the students to meet the Industries recruitment process</li>
+    <li>To motivate students to develop Technical knowledge and soft skills in terms of career planning, goal setting</li>
+    <li>To motivate students aspire for higher studies and guiding them to take competitive exams such as CAT, GATE, TOEFL, GRE, IES,UPSC,TNPSC etc</li>
+    <li>Aiming to Place the maximum number of students through campus & off-campus interviews conducted by the top companies</li>
+
+</ul>
+
+{% endblock %}
+{% block video %}
+<hr>
+<h2 class="py-2 mt-1" style="background-color:#5F9EA0;color:white;font-family:Verdana;"><i class="ml-1"> Success Stories</i></h2>
+<!--<h1 style="font-family:Helvetica;color:green;"><i><u>Success</u> <u>Stories</u></i></h1>-->
+<br>
+<table class="table table-bordered">
+
+
+    {% for i in form %}
+    <tr>
+        <td>
+            <a href="../../static/{{i.video}}/" class="rare-wind-gradient"> <img src="{% static 'images/youtube.png/'%}"
+                                                                                class="img-responsive"
+                                                                                style="width: 100px; float: left; margin-right: 5px;"/>
+
+            </a>
+
+            <br>
+        </td>
+        <td>
+            <div class="card-header" style="background-color:orange"><b><h6>{{i.title}}</h6></b>
+                {{i.motivate_notes}}
+                <br><h5 style="float:right;color:red"><i>Created by<b> {{i.name}}</b></i></h5><br>
+            </div>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'view_successStory' %}">
+    <button type="button" class="btn btn-primary mr-3" style="float:right">More</button>
+</a>
+<br>
+<br>
+{% endblock %}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- custom css-->
+    <link rel="stylesheet" href="media/pcapp/css/homecss.css" type="text/css">
+    {% block head %}{% endblock %}
+</head>
+<body>
+<!--header-->
+<div class="container-flauid" style="margin:1px">
+    <div class="jumbotron mb-0 text-center" style="background-color:#5F9EA0">
+
+        <!--  <img class="card card-img-top text-left" src="{% static 'images/pc.png/' %}" alt="Card image cap" style="height:auto;width:300px;">-->
+
+        <h1 style="color:orange;font-size:40px">Placement Cell</h1>
+    </div>
+    <!--navbar-->
+    {% include 'navbar.html' %}
+    <!--body-->
+    <div class="row mr-1">
+        <div class="col-sm-3" style="background-color:#5F9EA0">
+            <div class="card ml-2 mt-3 mb-3">
+                <div class="card-body text-center">
+                    <h3>TPO Update</h3>
+                    <hr>
+                    <marquee class="text-left" direction="up" scrollamount="4">
+                        {% for i in tpo %}
+                        <ul type="circle">
+                            <li><a href="">{{i.tpo_update}}&nbsp<span class="badge badge-danger badge-pill">New</span>
+                            </a><br></li>
+                        </ul>
+                        {% endfor %}
+
+                    </marquee>
+
+                </div>
+            </div>
+            <div class="card ml-2 mt-3 mb-3">
+                <div class="card-body text-center">
+                    <h3>Student Update</h3>
+                    <hr>
+                    <marquee class="text-left" direction="up" scrollamount="4">
+                        {% for i in studupdate %}
+                        <ul type="circle">
+                            <li><a href="">{{i.student_update}} &nbsp<span
+                                    class="badge badge-danger badge-pill">New</span>
+                            </a><br>
+                            </li>
+                        </ul>
+                        {% endfor %}
+                    </marquee>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+
+
+    <!-- successStory video links-->
+
+    {% block video %}{% endblock %}
+
+
+    <!-- footer -->
+    <div class="footer col-md-12">
+        <div class="row" style="background-color:#5F9EA0">
+            <div class="col-md-3" style="background-color:#5F9EA0;color:white"><br>
+                <h2>College Address</h2>
+                <a href="" style="color:black">
+                    <p><b>Goverment Engineering Collage,Modasa</b></p>
+                    <a href="http://www.gecmodasa.ac.in" style="color:black"><p><i class="fa fa-fw fa-globe"></i>
+                        http://www.gecmodasa.ac.in</p></a>
+                    <p style="color:black">(+91) 02774 242 634</p>
+
+
+                </a>
+            </div>
+            <div class="col-md-3" style="background-color:#5F9EA0;color:white">
+                <br>
+                <h2>Youtube Channel</h2>
+                <p>
+                    <a href="https://www.youtube.com/channel/UCeVMnSShP_Iviwkknt83cww" style="color:black">Code With
+                        Harry</a>
+                </p>
+                <p>
+                    <a href="https://www.youtube.com/channel/UCTZRcDjjkVajGL6wd76UnGg" style="color:black">Dennis
+                        lvy</a>
+                </p>
+                <p>
+                    <a href="https://www.w3schools.com/bootstrap4/" style="color:black">Bootsrap 4</a>
+                </p>
+            </div>
+            <div class="col-md-3" style="background-color:#5F9EA0;color:white">
+                <br>
+                <h2>USEFUL LINKS</h2>
+                <p>
+                    <a href="https://docs.djangoproject.com/en/3.0/" style="color:black">docs.djangoproject.com</a>
+                </p>
+                <p>
+                    <a href="https://www.w3schools.com/" style="color:black">www.w3schools.com</a>
+                </p>
+                <p>
+                    <a href="https://www.javatpoint.com/" style="color:black">www.javatpoint.com</a>
+                </p>
+                <p>
+                    <a href="https://www.tutorialspoint.com/django/index.htm"
+                       style="color:black">www.tutorialspoint.com</a>
+                </p>
+            </div>
+            <div class="col-md-3" style="background-color:#5F9EA0;color:white">
+                <br>
+                <h2>Contact</h2>
+                <p style="color:black">
+                    <i class="fa fa-fw fa-home"></i>Shamlaji Road, Modasa, District Aravalli , Gujarat, India 383315</p>
+                <p style="color:black">
+                    <i class="fa fa-fw fa-envelope"></i> gec-modasa-dte@gujarat.gov.in</p>
+                <p style="color:black">
+                    <i class="fa fa-fw fa-phone"></i> + 9662595733</p>
+                <p style="color:black">
+                    <i class="fa fa-fw fa-print"></i> + 6351516138</p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="column2 col-md-12" style="background-color:#2F4F4F;">
+                <!--Copyright-->
+                <p class="text-center mt-1" style="color:white">© 2020 Copyright:
+                    <a href="https://mdbootstrap.com/education/bootstrap/">
+                        <strong> Placement.com</strong>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

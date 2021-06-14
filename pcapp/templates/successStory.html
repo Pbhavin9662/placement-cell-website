@@ -1,0 +1,24 @@
+{% extends 'student.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Create Success Story{% endblock %}
+{% block head %}
+{% endblock %}
+{% include 'navbar.html' %}
+{% block body %}
+{% for message in messages %}
+<div class="alert alert-danger">
+  <strong >{{message}}</strong>
+</div>
+            <p></p>
+            {% endfor %}
+<div class="modal-header">
+    <h4 class="modal-title" style="color:green">Student Success Story</h4>
+</div>
+<hr>
+<form class="form-horizontal" method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

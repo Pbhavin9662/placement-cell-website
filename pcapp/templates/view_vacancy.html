@@ -1,0 +1,85 @@
+{% extends 'student.html' %}
+{% block title %}view vaccany{% endblock %}
+{% block head %}
+{% endblock %}
+{% include 'navbar.html' %}
+{% block body %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th><h3>view vaccancy</h3></th>
+    </tr>
+    <tr>
+        <th><label>Show</label>
+            <select name="tablesize">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+            <label>entries</label>
+        </th>
+        <th>
+            <form action="/search" method="get" class="form-inline">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <input type="search" class="form-control  ml-4 mr-1" name="query" id="query" style="width:300px" placeholder="search name">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </th>
+    </tr>
+    </thead>
+</table>
+<table class="table table-bordered">
+    <tr>
+        <th>S.NO</th>
+        <th>Name</th>
+        <th>Job title</th>
+        <th>No.of opening</th>
+        <th>Last Date</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in users %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.job_title}}</td>
+        <td>{{i.no_of_opening}}</td>
+        <td>{{i.last_date}}</td>
+        <td style="color:green">
+            <a href="{% url 'view_vaccancy_details' i.id %}">
+                <button class="btn btn-danger">View</button>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+  {% if users.has_other_pages %}
+  <ul class="pagination justify-content-end">
+    {% if users.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ users.previous_page_number }}">previous</a></li>
+    {% else %}
+      <li class="disabled page-item"><span class="page-link">&laquo;</span></li>
+    {% endif %}
+    {% for i in users.paginator.page_range %}
+      {% if users.number == i %}
+        <li class="active page-item"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if users.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ users.next_page_number }}">Next</a></li>
+    {% else %}
+      <li class="disabled page-item"><span class="page-link">&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}About Us{% endblock %}
+{% block head %}
+{% endblock %}
+{% include 'navbar.html' %}
+{% block body %}
+<div class="modal-header">
+    <h4 class="modal-title">About Us</h4>
+</div>
+<br>
+<table>
+    <tr>
+        <td>
+            <div class="col-md-6">
+        <ul type="triangle">
+            <li style="color:black;font-size:20px"><p>The placement cell is a student initiative which has evolved from the internship cell and it
+                comprised entirely of students. The main aim of the cell is to provide placements & internships to
+                students.</p><br></li>
+            <li style="color:black;font-size:20px"><p>The placement cell consists of students from all the courses as well as teachers. Members of the
+                placement cell work for the benefit of the students of the college.</p><br></li>
+            <li style="color:black;font-size:20px"><p>The placement cell of the college, had provided a good amount of placements as well as internships to
+                all the students previously.</p></li>
+        </ul>
+
+    </div>
+        </td>
+        <td>
+            <img src="{% static 'images/pc1.jpeg/'%}" style="width:400px;height:400px"/>
+        </td>
+
+
+    </tr>
+</table>
+        {% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'student.html' %}
+{% block title %}view student form{% endblock %}
+{% block head %}
+{% endblock %}
+{% include 'navbar.html' %}
+{% block body %}
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th><h3>View Student Form</h3></th>
+    </tr>
+    </thead>
+</table>
+<table class="table table-bordered">
+    <thead>
+    {% for i in studentform %}
+    <tr>
+        <th>Name</th>
+        <td>{{i.s_name}}</td>
+        <th>Enrollment</th>
+        <td>{{i.s_e_num}}</td>
+    </tr>
+
+    <tr>
+        <th>Sem</th>
+        <td>{{i.s_sem}}</td>
+        <th>Branch</th>
+        <td>{{i.s_branch}}</td>
+    </tr>
+    <tr>
+        <th>Gender</th>
+        <td>{{i.s_gender}}</td>
+        <th>Mobile</th>
+        <td>{{i.s_mobile}}</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>{{i.s_email}}</td>
+        <th>s_state</th>
+        <td>{{i.s_state}}</td>
+    </tr>
+    <tr>
+        <th>District</th>
+        <td>{{i.s_dist}}</td>
+        <th>Pincode</th>
+        <td>{{i.s_pincode}}</td>
+    </tr>
+    <tr>
+        <th>DOB</th>
+        <td>{{i.s_dob}}</td>
+        <th>Address</th>
+        <td>{{i.s_address}}</td>
+    </tr>
+    <tr>
+        <th>Profile</th>
+        <td><a href="../../static/images/{{i.s_profile}}/">{{i.s_profile}}</a></td>
+        <th>Resume</th>
+        <td><a href="../../static/images/{{i.s_resume}}/">{{i.s_resume}}</a></td></td>
+    </tr>
+    <tr>
+        <th>SSC Marks</th>
+        <td>{{i.s_ssc_per}}</td>
+        <th>HSC Marks</th>
+        <td>{{i.s_hsc_per}}</td>
+    </tr>
+    <tr>
+        <th>CPI</th>
+        <td>{{i.s_cpi}}</td>
+        <th>CGPA</th>
+        <td>{{i.s_cgpa}}</td>
+    </tr>
+
+    {% endfor %}
+    </thead>
+</table>
+
+<div>
+    {% for i in studentform %}
+        <a href="{% url 'update_student_form' i.id %}"><button class="btn btn-primary">update form</button></a>
+    {% endfor %}
+    <a href="{% url 'student_dashboard' %}"><button class="btn btn-primary">go to Home page</button></a>
+
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'student.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Profile{% endblock %}
+{% block head %}
+
+<style>
+	.profile-pic{
+		max-width: 350px;
+		max-height:350px;
+		margin: 1 auto;
+		border-radius: 50%;
+	}
+
+</style>
+{% endblock %}
+{% include 'navbar.html' %}
+{% block body %}
+<br>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card card-header" style="height:450px">
+            <a class="btn btn-warning" href="{% url 'student_dashboard' %}"> &#8592; Back to Profile</a>
+            <hr>
+            <h3 style="text-align: center">Account Settings</h3>
+            <hr>
+            <img class="profile-pic" src="{{request.user.company.profile_pic.url}}">
+            <img class="profile-pic" src="{{request.user.student.profile_pic.url}}">
+
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card card-header">
+            <h2>Profile Setting</h2>
+            <form method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form|crispy}}
+
+                <input class="btn btn-primary" type="submit" name="Update Information">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

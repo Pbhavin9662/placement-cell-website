@@ -1,0 +1,13 @@
+{% extends 'basic.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Register page{% endblock %}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<h3>Password reset complete</h3>
+
+<p>Your password has been set. You may go ahead and log in now.</p>
+
+<a href="{% url 'login' %}">Log in</a>
+{% endblock %}

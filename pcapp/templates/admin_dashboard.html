@@ -1,0 +1,56 @@
+{% extends 'admin.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="media/css/student_dashboard.css" type="text/css">
+{% endblock %}
+{% include 'navbar.html' %}
+{% block body %}
+<table class="table">
+    <thead>
+    <tr>
+        <th><h3>Admin Dashboard</h3></th>
+    </tr>
+
+    </thead>
+</table>
+
+<div class="row ml-2 ">
+    <div class="card card-header col-md-3 mr-1" style="text-align:center">Applied Students<br>
+        <h1>{{totalapply}}</h1></div>
+    <div class="card card-header col-md-3 mr-1" style="text-align:center">Total Student Accounts<br>
+        <h1>{{stud_no}}</h1></div>
+    <div class="card card-header col-md-3 mr-1" style="text-align:center">Total Company Accounts<br>
+        <h1>{{comp_no}}</h1></div>
+    <div class="card card-header col-sm-2" style="text-align:center">Total placed<br>
+        <h1>{{totalplaced}}</h1></div>
+</div>
+<hr>
+
+<h3 style="font-family:Helvetica;color:blue;"><i>Latest Job News</i></h3>
+<hr>
+{% for i in vacancy %}
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-gift" style="color:red"></i>&nbsp;&nbsp;
+        <label> <b>{{i.job_title}}</b></label>
+        <a href="{% url 'admin_view_vacancy_details' i.id %}"><button class="btn btn-danger float-right">Details</button></a>
+        <p class="ml-4">{{i.name}}</p>
+        <table class="table">
+            <tr>
+                <td><i class="fas fa-users"></i></td>
+                <td><i class="fas fa-dollar-sign"></i></td>
+                <td><i class="fas fa-map-marker-alt"></i></td>
+                <td><i class="fas fa-calendar-alt"></i></td>
+
+            </tr>
+            <tr>
+                <td><p>{{i.no_of_opening}}</p></td>
+                <td><p>{{i.salary}}/Month</p></td>
+                <td><p>{{i.location}}</p></td>
+                <td><p>{{i.last_date}}</p></td>
+            </tr>
+        </table>
+    </div>
+</div><br>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'student.html' %}
+{% load crispy_forms_tags %}
+{% block title %}view vaccancy details{% endblock %}
+{% block head %}
+{% endblock %}
+{% include 'navbar.html' %}
+
+{% block body %}
+
+<form enctype="multipart/form-data" method="post">{% csrf_token %}
+    <table class="table" xmlns="http://www.w3.org/1999/html">
+        <thead>
+        <tr>
+            <th><h3>View Vaccancy Details</h3></th>
+        </tr>
+
+        </thead>
+    </table>
+    <table class="table table-bordered">
+        <tbody>
+        {% for i in form %}
+        <tr>
+            <th>Job Title</th>
+            <td>{{i.job_title}}</td>
+            <th>Company Name</th>
+            <td>{{i.name}}</td>
+        </tr>
+        <tr>
+            <th>Job Descriptions</th>
+            <td colspan="4">{{i.description}}</td>
+        </tr>
+        <tr>
+            <th>Monthly Salary</th>
+            <td>{{i.salary}}</td>
+            <th>Job Location</th>
+            <td>{{i.location}}</td>
+        </tr>
+        <tr>
+            <th>No of Opening</th>
+            <td colspan="4">{{i.no_of_opening}}</td>
+        </tr>
+        <tr>
+            <th>Apply Date</th>
+            <td>{{i.apply_date}}</td>
+            <th>Last Date</th>
+            <td>{{i.last_date}}</td>
+        </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+    {% for i in form %}
+    {% if current_date <= i.last_date %}
+
+    <div>{{ jobform|crispy }}</div>
+    <div class="float-center">
+        <button type="submit" class="btn btn-primary">Apply</button>
+    </div>
+    {% else %}
+    <div class="float-center">
+        <h2 style="color:red;text-align:center">Job Expired</h2>
+    </div>
+    {% endif %}
+    {% endfor %}
+</form>
+
+{% endblock %}
